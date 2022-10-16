@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(isotpp LANGUAGES CXX VERSION 1.0)
+project(isotpp LANGUAGES CXX VERSION 1.0 DESCRIPTION "A C++ implementation of the ISOTP CAN transmission protocol")
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
