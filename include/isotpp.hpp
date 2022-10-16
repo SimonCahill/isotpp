@@ -32,6 +32,7 @@
 /////////////////////
 #include "types/CanId.hpp"
 #include "types/IsoTpFrame.hpp"
+#include "types/ReturnValue.hpp"
 
 /**
  * @brief Top-level namespace for the library.
@@ -49,6 +50,9 @@ namespace isotpp {
     using std::vector;
 
     using types::CanId;
+    using types::FlowControlFlag;
+    using types::FrameType;
+    using types::ReturnValue;
 
     // custom typedefs
     using buf_t = vector<uint8_t>;
@@ -79,13 +83,13 @@ namespace isotpp {
 
         public: // +++ CAN message transception +++
             void            handleIncomingCanFrame(const buf_t&); //!< Handle an incoming CAN frame from your application
-            void            handleIncomingCanFrame(const buf_t&, uint16_t&); //!< Handle an incoming CAN frame and output the actual amount of data
+            ReturnValue     handleIncomingCanFrame(const buf_t&, uint16_t&); //!< Handle an incoming CAN frame and output the actual amount of data
 
-            void            sendCanFrame(const buf_t&); //!< Sends one or more CAN frames
-            void            sendCanFrame(const buf_t&, const CanId); //!< Sends one or more CAN frames using the passed CAN ID
+            ReturnValue     sendCanFrame(const buf_t&); //!< Sends one or more CAN frames
+            ReturnValue     sendCanFrame(const buf_t&, const CanId); //!< Sends one or more CAN frames using the passed CAN ID
 
-        public: // +++ ISOTP Frame Sending +++
-            
+        protected: // +++ ISOTP Frame Sending +++
+            ReturnValue     sendFlowControlFrame(const FlowControlFlag, const uint8_t blockSize, const uint8_t nextFrameInterval);
 
         protected: // +++ Protected Constructor +++
             explicit        IsoTpp();
