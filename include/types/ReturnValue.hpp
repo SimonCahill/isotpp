@@ -46,7 +46,20 @@ namespace isotpp { namespace types {
          */
         UNEXPECTED_FRAME    = 4,
 
-        
+        /**
+         * @brief The input buffer is full and can no longer accept data.
+         */
+        BUFFER_FULL         = 5,
+
+        /**
+         * @brief A timeout error has occurred. The client no longer responded.
+         */
+        TIMEOUT_OCCURRED    = 6,
+
+        /**
+         * @brief The frame was an unexpected size.
+         */
+        INVALID_LENGTH      = 7
     };
 
 } /* namespace types */ } /* namespace isotpp */
