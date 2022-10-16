@@ -1,6 +1,6 @@
 /**
  * @file LogLevel.hpp
- * @author Simon Cahill (simonc@online.de)
+ * @author Simon Cahill (contact@simonc.eu)
  * @brief Contains the declaration for different logging levels used by IsoTpp
  * @version 0.1
  * @date 2021-06-25
