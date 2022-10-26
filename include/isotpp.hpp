@@ -40,7 +40,7 @@
 namespace isotpp {
 
     using std::atomic;
-    using std::chrono::duration;
+    using std::chrono::milliseconds;
     using std::function;
     using std::mutex;
     using std::shared_ptr;
@@ -78,7 +78,7 @@ namespace isotpp {
 
         public: // +++ Polling +++
             void            poll(); //!< Handles timeouts, frame sending, etc.
-            void            startPolling(const duration& interval); //!< Start a background polling service for you
+            void            startPolling(const milliseconds& interval); //!< Start a background polling service for you
             void            stopPolling(); //!< Stops the background poller
 
         public: // +++ CAN message transception +++
@@ -102,7 +102,7 @@ namespace isotpp {
 
             CanId           m_canId;
 
-            duration        m_pollInterval;
+            milliseconds    m_pollInterval;
 
             gettickcb_t     m_getSysTickCallback;
             
