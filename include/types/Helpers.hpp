@@ -25,22 +25,6 @@ namespace isotpp { namespace types {
 
     using std::vector;
 
-    union FrameUnion {
-        uint8_t raw[8];
-        BaseFrame common;
-        SingleFrame singleFrame;
-        FirstFrame firstFrame;
-        ConsecutiveFrame consecutiveFrame;
-        FlowControlFrame flowControlFrame;
-    };
-
-    /**
-     * @brief A union of all the possible frames types available with ISOTP.
-     */
-    struct IsoTpFrame {
-        FrameUnion frameTypes;
-    } __attribute__((packed));
-
     /**
      * @brief Transforms a byte pointer (@see uint8_t) to a vector containing the same data.
      * 
@@ -58,7 +42,7 @@ namespace isotpp { namespace types {
         if (data == nullptr) { return returnVal; }
         const uint8_t sanitisedLen = len > CAN_MAX_DLEN && truncate ? CAN_MAX_DLEN : len;
 
-        std::transform(data, data + sanitisedLen, std::back_inserter(returnVal), [](const auto) { return true; });
+        std::transform(data, data + sanitisedLen, std::back_inserter(returnVal), [](const uint8_t) { return true; });
 
         return returnVal;
     }
