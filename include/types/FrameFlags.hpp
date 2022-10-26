@@ -13,34 +13,9 @@
 
 #include <stdint.h>
 
+#include "FrameType.hpp"
+
 namespace isotpp { namespace types {
-
-    /**
-     * @brief Enum type containing the different frame types available for ISOTP communication.
-     */
-    enum class FrameType: uint8_t {
-        /**
-         * @brief The entire message consists of a single frame.
-         */
-        SINGLE_FRAME        = 0,
-
-        /**
-         * @brief First frame; this frame is one of many.
-         */
-        FIRST_FRAME         = 1,
-
-        /**
-         * @brief Consecutive frame; this is one frame in an array of N frames.
-         */
-        CONSECUTIVE_FRAME   = 2,
-
-        /**
-         * @brief The flow control frame allows the transmitter and receiver to exchange information on how to proceed with transmission of the data.
-         */
-        FLOW_CONTROL_FRAME  = 3
-
-        // type 4-15 are reserved for future use!
-    };
 
     /**
      * @brief Enum type containing the different possible flow control flags for ISOTP communication.
